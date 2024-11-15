@@ -1,0 +1,23 @@
+<h1>Editar Tema</h1>
+<form action="/topics/edit/<%= topic.id %>" method="POST">
+  <label for="title">Título:</label>
+  <input type="text" name="title" id="title" value="<%= topic.title %>" required>
+
+  <label for="description">Descripción:</label>
+  <textarea name="description" id="description" required><%= topic.description %></textarea>
+
+  <!-- Sección para editar enlaces -->
+  <h3>Enlaces</h3>
+  <div id="links-container">
+    <% topic.links.forEach(function(link, index) { %>
+      <div class="link-item">
+        <label for="link-<%= index %>">URL del Enlace:</label>
+        <input type="text" name="links[<%= index %>][url]" value="<%= link.url %>" required>
+        <!-- Añadir un campo oculto para el ID del enlace -->
+        <input type="hidden" name="links[<%= index %>][id]" value="<%= link.id %>">
+      </div>
+    <% }); %>
+  </div>
+
+  <button type="submit">Actualizar Tema</button>
+</form>

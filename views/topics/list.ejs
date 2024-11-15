@@ -1,0 +1,46 @@
+<h1>Lista de Temas</h1>
+<a href="/topics/add">Agregar Tema</a>
+<ul>
+  <% topics.forEach(topic => { %>
+    <li>
+      <h3><%= topic.title %></h3>
+      <p><%= topic.description %></p>
+      <p>Votos: <%= topic.votes %></p>
+      
+      <!-- Botón para votar por el tema -->
+      <form action="/topics/upvote/<%= topic.id %>" method="POST">
+        <button type="submit">Votar</button>
+      </form>
+      
+      <!-- Enlace para editar el tema -->
+      <a href="/topics/edit/<%= topic.id %>">Editar</a>
+      
+      <!-- Formulario para eliminar el tema -->
+      <form action="/topics/delete/<%= topic.id %>" method="POST">
+        <button type="submit">Eliminar</button>
+      </form>
+      
+      <!-- Mostrar los enlaces relacionados con el tema -->
+      <h4>Enlaces Relacionados:</h4>
+      <ul>
+        <% topic.links.sort((a, b) => b.votes - a.votes).forEach(link => { %>
+          <li>
+            <a href="<%= link.url %>" target="_blank"><%= link.url %></a> - Votos: <%= link.votes %>
+            <!-- Botón para votar por el enlace -->
+            <form action="/topics/<%= topic.id %>/links/<%= link.id %>/vote" method="POST" style="display: inline;">
+              <button type="submit">Votar por este enlace</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      
+      <!-- Formulario para agregar un nuevo enlace al tema -->
+      <h5>Agregar un Enlace:</h5>
+      <form action="/topics/<%= topic.id %>/links/add" method="POST">
+        <input type="text" name="url" placeholder="URL del enlace" required>
+        <button type="submit">Agregar Enlace</button>
+      </form>
+      
+    </li>
+  <% }) %>
+</ul>

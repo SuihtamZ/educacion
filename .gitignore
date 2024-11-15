@@ -1,0 +1,41 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos de entorno y configuración sensibles
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Directorios temporales de desarrollo
+coverage/
+.temp/
+.cache/
+
+# Archivos de salida de construcciones (si se usan)
+build/
+dist/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editores (opcional)
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Configuración de SASS y CSS (si se usa)
+.sass-cache/
+*.css.map
+
+# Configuración de EJS (si se personalizan archivos de compilación, si no, no es necesario)
+*.ejs~
