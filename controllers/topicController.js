@@ -41,7 +41,7 @@ exports.upvoteTopic = (req, res) => {
 // Mostrar todos los temas (ordenados por votos)
 exports.showAllTopics = (req, res) => {
     try {
-        // En lugar de Topic.find(), utilizamos Topic.getAllTopics() para obtener todos los temas
+        //Utilizamos Topic.getAllTopics() para obtener todos los temas
         const topics = Topic.getAllTopics();
         res.render('topics/list', { topics });
     } catch (err) {
